@@ -1,0 +1,62 @@
+$size: 30;
+$color: #73AD21;
+$direction: row;
+
+@mixin container($direction) {
+	display: flex;
+	justify-content: center;
+	flex-direction: $direction;
+}
+
+@mixin ring ($size, $color) {
+	.square {
+	  height: $size * 1px;
+	  width: $size * 1px;
+  	  border-radius: 50%;
+  	  border: $size * 0.1px solid $color;
+      background-color: none;
+      @if $size >= 100 {
+  		box-shadow: inset 3px 5px 7px 1px #F9A602, 3px 5px 7px 1px #F9A602;
+      }
+	}
+}
+
+.containerB{
+	@include container(column);
+	background-color: #FFF8DC;
+}
+
+.container1 {
+	@include container(row);
+	margin: 5% 5%;
+	align-items: center;
+	div {
+		margin-right: 3%;
+	} 
+
+}
+
+.ring1 {
+	@include ring(30, #FF8C00);
+}
+
+.ring2 {
+	@include ring(100, #FFD700);
+}
+
+@for $i from 1 through 6 {
+	.ringl#{$i} {
+	@include ring (20 * $i, red);
+	top:25px;
+	left: (250 - (55 * $i))px;
+	z-index:$i;
+	}
+}
+.al {
+	margin : auto;
+}
+
+h2 {
+font-family: 'Metamorphous', cursive;
+}
+
